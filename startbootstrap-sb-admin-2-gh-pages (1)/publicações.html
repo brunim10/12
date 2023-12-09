@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Adicione os estilos do Swiper -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+          body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .post-container {
+            max-width: 600px;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .username {
+            font-weight: bold;
+        }
+
+        /* Alteração no estilo do container do Swiper */
+        .swiper-container {
+            width: 100%;
+            height: 300px; /* Altura do carousel */
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            /* Estilos adicionais para os slides do carousel */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajusta a imagem para caber no contêiner */
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #000; /* Cor dos botões de navegação */
+        }
+
+        .post-footer {
+            padding: 12px;
+        }
+
+        .icons {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .icon {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .likes-count {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .comments {
+            margin-top: 10px;
+        }
+
+        .comment {
+            margin-bottom: 8px;
+        }
+
+        .comment-input {
+            width: 100%;
+            margin-top: 10px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .comment-button {
+            margin-top: 10px;
+            padding: 8px;
+            background-color: #3897f0;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+    <title>Instagram Post</title>
+</head>
+<body>
+    <div class="post-container">
+        <div class="post-header">
+            <img src="startbootstrap-sb-admin-2-gh-pages\img\img\1.jpeg" alt="" class="user-avatar">
+            <div class="username">BrunoSantos</div>
+        </div>
+        <!-- Adicione o container Swiper -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!-- Adicione slides do Swiper para cada imagem do post -->
+                <div class="swiper-slide"><img src="startbootstrap-sb-admin-2-gh-pages\img\img\2.jpeg" alt=""></div>
+                <div class="swiper-slide"><img src="startbootstrap-sb-admin-2-gh-pages\img\img\3.jpeg" alt=""></div>
+                <div class="swiper-slide"><img src="startbootstrap-sb-admin-2-gh-pages\img\img\4.jpeg" alt=""></div>
+                <div class="swiper-slide"><img src="startbootstrap-sb-admin-2-gh-pages\img\img\5.jpeg" alt=""></div>
+                <div class="swiper-slide"><img src="startbootstrap-sb-admin-2-gh-pages\img\img\7.jpeg" alt=""></div>
+                <div class="swiper-slide"><img src="startbootstrap-sb-admin-2-gh-pages\img\img\8.jpeg" alt=""></div>
+                <div class="swiper-slide"><img src="startbootstrap-sb-admin-2-gh-pages\img\img\9.jpeg" alt=""></div>
+                <div class="swiper-slide"><img src="startbootstrap-sb-admin-2-gh-pages\img\img\10.jpeg" alt=""></div>
+                <div class="swiper-slide"><img src="startbootstrap-sb-admin-2-gh-pages\img\img\11.jpeg" alt=""></div>
+                <div class="swiper-slide"><img src="startbootstrap-sb-admin-2-gh-pages\img\img\12.jpeg" alt=""></div>
+                <div class="swiper-slide"><img src="startbootstrap-sb-admin-2-gh-pages\img\img\13.jpeg" alt=""></div>
+                <!-- Adicione mais slides conforme necessário -->
+            </div>
+            <!-- Adicione os botões de navegação do Swiper -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+        <div class="post-footer">
+            <div class="icons">
+                <span class="icon like-icon" onclick="toggleLike()">&#10084;</span>
+                <span class="icon">&#128172;</span>
+                <div class="likes-count" id="likeCount">134 likes</div>
+            </div>
+            <div class="comments" id="commentsSection">
+                <div class="comment"><strong>GilmarGalvão:</strong> Brabos! &#128077;</div>
+                <div class="comment"><strong>ReOliveira</strong> Lindos &#127748;</div>
+                <!-- More comments go here -->
+            </div>
+            <input type="text" class="comment-input" id="commentInput" placeholder="Add a comment...">
+            <button class="comment-button" onclick="addComment()">Post</button>
+        </div>
+    </div>
+
+    <!-- Adicione o script do Swiper -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        var isLiked = false;
+        var likeCount = 134;
+
+        function toggleLike() {
+            isLiked = !isLiked;
+            likeCount += isLiked ? 1 : -1;
+            document.getElementById('likeCount').textContent = likeCount + ' likes';
+            document.querySelector('.like-icon').style.color = isLiked ? '#ed4956' : '';
+        }
+
+        function addComment() {
+            var commentInput = document.getElementById('commentInput');
+            var commentText = commentInput.value.trim();
+
+            if (commentText !== '') {
+                var commentsSection = document.getElementById('commentsSection');
+                var newComment = document.createElement('div');
+                newComment.className = 'comment';
+                newComment.innerHTML = '<strong>Isabferro:</strong> ' + commentText;
+                commentsSection.appendChild(newComment);
+
+                // Limpar o campo de entrada
+                commentInput.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
